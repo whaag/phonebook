@@ -2,6 +2,7 @@
 <html ng-app="phonebook" lang="en">
 <head>
     <meta charset="UTF-8">
+    <META http-equiv="Content-Language" content="en-IE">
     <title>Phonebook app</title>
     <link rel="icon"
           type="image/x-icon"
@@ -15,9 +16,27 @@
 <body ng-controller="PhonebookController as book" >
     <div ng-repeat="product in book.product" >
         <h1>{{ product.name }}</h1>
-        <h2>{{ product.price }}</h2>
-        <p>{{ product.description }}</p>
-        <button ng-show="product.canPurchase">Some button</button>
+        <h2>{{ product.price | currency }}</h2>
+        <section ng-controller="PanelController as panel">
+            <ul class="nav nav-pills">
+                <li ng-class="{active:panel.isSelected(1)}"><a href ng-click="panel.selectTab(1)">something</a></li>
+                <li ng-class="{active:panel.isSelected(2)}"><a href ng-click="panel.selectTab(2)">slasa</a></li>
+                <li ng-class="{active:panel.isSelected(3)}"><a href ng-click="panel.selectTab(3)">limao</a></li>
+            </ul>
+            <div class="panel" ng-show="panel.isSelected(1)">
+                <h4>Description</h4>
+                {{ product.description }}
+            </div>
+            <div class="panel" ng-show="panel.isSelected(2)">
+                <h4>Bananas</h4>
+                bananas
+            </div>
+            <div class="panel" ng-show="panel.isSelected(3)">
+                <h4>Apples</h4>
+                apples
+            </div>
+            <button ng-show="product.canPurchase">Some button</button>
+        </section>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
