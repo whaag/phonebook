@@ -29,7 +29,10 @@
             </div>
             <div class="panel" ng-show="panel.isSelected(2)">
                 <h4>Bananas</h4>
-                bananas
+                <form>
+                    <textarea ng-model="bananas"></textarea>
+                    {{ bananas }}
+                </form>
             </div>
             <div class="panel" ng-show="panel.isSelected(3)">
                 <h4>Apples</h4>
