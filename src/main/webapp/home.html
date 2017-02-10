@@ -12,10 +12,26 @@
           crossorigin="anonymous" >
     <title>Phone book</title>
 </head>
-<body>
+<body ng-controller="ListController as list">
     <h2 align="center">Phone Book</h2>
     <hr />
-    <input type="text" ng-model="person.name" /> {{ person.name }}
+    <input type="text" ng-model="filter.name" /> {{ filter.name }}
+    <hr />
+
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+
+        <tr ng-repeat="person in list.people | filter: filter.name">
+            <td>{{ person.name }}</td>
+            <td>{{ person.phone }}</td>
+            <td>edit</td>
+        </tr>
+
+    </table>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
